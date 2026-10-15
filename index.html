@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Chapter For You ✨</title>
+  
+  <!-- Fonts Google & Libraries -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 20%, #2a0845 0%, #11031d 50%, #05000a 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+      color: #fff;
+    }
+
+    /* Ambient Glowing Orbs Background */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.5;
+      animation: floatOrb 12s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+
+    .orb-1 {
+      width: 320px;
+      height: 320px;
+      background: #ff007f;
+      top: 10%;
+      left: 10%;
+    }
+
+    .orb-2 {
+      width: 380px;
+      height: 380px;
+      background: #7928ca;
+      bottom: 10%;
+      right: 10%;
+      animation-delay: -5s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 60px) scale(1.15); }
+    }
+
+    /* Floating Particles Background */
+    .particle {
+      position: fixed;
+      top: -10vh;
+      color: rgba(255, 182, 193, 0.7);
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg) scale(1.2); opacity: 0; }
+    }
+
+    /* Glassmorphism Container Utama */
+    .card-container {
+      position: relative;
+      z-index: 10;
+      width: 90%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 35px 25px;
+      border-radius: 28px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff85a2;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 30%, #ff85a2 100%);
+  -webkit-background-clip: text;
+  background-clip: text; /* <-- Tambahkan baris ini */
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+    
+
+    /* Amplop Premium */
+    .envelope-wrapper {
+      margin: 25px auto;
+      width: 160px;
+      height: 110px;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      border-radius: 14px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 15px 30px rgba(255, 65, 108, 0.35);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .envelope-wrapper:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-left: 80px solid transparent;
+      border-right: 80px solid transparent;
+      border-top: 60px solid #e02850;
+      transform-origin: top;
+      transition: transform 0.5s ease;
+    }
+
+    .envelope-wrapper.open .envelope-flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope-heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.2rem;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+
+    /* Letter Container */
+    .letter-box {
+      display: none;
+      margin-top: 20px;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Gallery Photo Polaroid Section */
+    .gallery-section {
+      margin-top: 15px;
+      margin-bottom: 25px;
+    }
+
+    .polaroid-frame {
+      background: #ffffff;
+      padding: 12px 12px 20px 12px;
+      border-radius: 8px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .polaroid-frame:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .polaroid-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .polaroid-caption {
+      font-family: 'Caveat', cursive;
+      color: #2b2b2b;
+      font-size: 1.4rem;
+      margin-top: 10px;
+    }
+
+    .gallery-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Text Note Inside Letter */
+    .note-text {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 18px;
+      border-radius: 16px;
+      border-left: 3px solid #ff85a2;
+      text-align: left;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #f1f1f1;
+      margin-bottom: 20px;
+    }
+
+    /* Interactive Buttons */
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      position: relative;
+      min-height: 50px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      padding: 12px 26px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn-yes {
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 65, 108, 0.4);
+    }
+
+    .btn-yes:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 25px rgba(255, 65, 108, 0.6);
+    }
+
+    .btn-no {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ccc;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: absolute;
+      right: 20px;
+    }
+
+    /* Floating Music Bar */
+    .music-bar {
+      margin-top: 25px;
+      font-size: 0.85rem;
+      color: #ff85a2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .music-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* SweetAlert Custom Popup Styling */
+    .custom-popup {
+      background: rgba(20, 10, 30, 0.95) !important;
+      backdrop-filter: blur(20px) !important;
+      border: 1px solid rgba(255, 133, 162, 0.3) !important;
+      border-radius: 24px !important;
+      color: white !important;
+      padding: 25px !important;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6) !important;
+    }
+
+    .custom-title {
+      color: #ff85a2 !important;
+      font-size: 1.6rem !important;
+      font-weight: 700 !important;
+    }
+
+    .custom-body {
+      color: #e0e0e0 !important;
+      font-size: 1rem !important;
+    }
+
+    .custom-confirm-btn {
+      background: linear-gradient(135deg, #ff416c, #ff4b2b) !important;
+      border-radius: 25px !important;
+      padding: 10px 28px !important;
+      font-size: 0.95rem !important;
+      font-weight: 600 !important;
+      box-shadow: 0 8px 20px rgba(255, 65, 108, 0.4) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Background Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- Audio Background -->
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card-container animate__animated animate__fadeInUp">
+    <div class="subtitle">Pesan Rahasia</div>
+    <h1>Special For You ✨</h1>
+    <p style="color: #bbb; font-size: 0.9rem;">Sentuh amplop di bawah ini untuk membuka cerita kita.</p>
+
+    <!-- Amplop -->
+    <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
+      <div class="envelope-flap"></div>
+      <div class="envelope-heart">💌</div>
+    </div>
+
+    <!-- Konten Surat Setelah Amplop Dibuka -->
+    <div class="letter-box" id="letter">
+      
+      <!-- Menu Galeri Foto Polaroid -->
+      <div class="gallery-section">
+        <div class="polaroid-frame">
+          <img id="galleryImg" class="polaroid-img" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=800&auto=format&fit=crop" alt="Memory Photo">
+          <div id="galleryCaption" class="polaroid-caption">Momen indah kita ✨</div>
+        </div>
+        <div class="gallery-nav">
+          <button class="nav-btn" onclick="prevPhoto()">◀ Sebelumnya</button>
+          <button class="nav-btn" onclick="nextPhoto()">Selanjutnya ▶</button>
+        </div>
+      </div>
+
+      <!-- Pesan Teks -->
+      <div class="note-text">
+        <p>Terima kasih ya sudah bikin setiap momen jadi terasa begitu berharga dan berwarna. 💖</p>
+        <p style="margin-top: 10px; font-weight: 600; color: #ff85a2;">Nanti ada waktu luang gak? Mau nge-date bareng aku weekend ini?</p>
+      </div>
+
+      <!-- Tombol Interaktif -->
+      <div class="btn-group">
+        <button class="btn btn-yes" onclick="sayYes()">Mau Banget! 🥰</button>
+        <button class="btn btn-no" id="btnNo" onmouseover="moveButton()" onclick="moveButton()">Enggak 😜</button>
+      </div>
+    </div>
+
+    <!-- Bar Pemutar Musik -->
+    <div class="music-bar">
+      <span>🎵 Background Music</span>
+      <button class="music-btn" onclick="toggleMusic()" id="musicToggle">▶</button>
+    </div>
+  </div>
+
+  <!-- Scripts External -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    // 1. Data Foto Galeri & Caption (Kamu bisa ganti URL foto dan captionnya di sini)
+    const photos = [
+      {
+        url: "img1.jpg",
+        caption: "Hari di mana semuanya terasa sempurna ✨"
+      },
+      {
+        url: "img2.jpg",
+        caption: "Momen terindah 💖"
+      },
+      {
+        url: "img3.jpg",
+        caption: "Semoga bisa terus bersama 🌸"
+      }
+    ];
+
+    let currentPhotoIndex = 0;
+
+    function updatePhoto() {
+      const imgEl = document.getElementById('galleryImg');
+      const captionEl = document.getElementById('galleryCaption');
+      
+      imgEl.style.opacity = 0;
+      setTimeout(() => {
+        imgEl.src = photos[currentPhotoIndex].url;
+        captionEl.innerText = photos[currentPhotoIndex].caption;
+        imgEl.style.opacity = 1;
+      }, 200);
+    }
+
+    function nextPhoto() {
+      currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+      updatePhoto();
+    }
+
+    function prevPhoto() {
+      currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+      updatePhoto();
+    }
+
+    // 2. Partikel Melayang (Floating Particles)
+    function createParticle() {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      p.innerHTML = ['✨', '💖', '🌸', '❄️', '💕'][Math.floor(Math.random() * 5)];
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = Math.random() * 3 + 4 + 's';
+      p.style.fontSize = Math.random() * 1.2 + 0.8 + 'rem';
+      document.body.appendChild(p);
+
+      setTimeout(() => { p.remove(); }, 7000);
+    }
+    setInterval(createParticle, 400);
+
+    // 3. Membuka Amplop
+    function openEnvelope() {
+      const env = document.getElementById('envelope');
+      const letter = document.getElementById('letter');
+      env.classList.add('open');
+      
+      setTimeout(() => {
+        env.style.display = 'none';
+        letter.style.display = 'block';
+      }, 450);
+
+      playMusic();
+    }
+
+    // 4. Tombol "Enggak" Menghindar
+    function moveButton() {
+      const btnNo = document.getElementById('btnNo');
+      const x = Math.random() * (window.innerWidth - 120) - (window.innerWidth / 2 - 60);
+      const y = Math.random() * 200 - 100;
+      btnNo.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    // 5. Pop-up Dramatis SweetAlert2 & Confetti
+    function sayYes() {
+      confetti({
+        particleCount: 160,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+
+      Swal.fire({
+        title: 'Yayy! See You Soon! ❤️',
+        html: 'Gak sabar buat jalan bareng kamu weekend ini! ✨🥰',
+        iconHtml: '👑',
+        showClass: {
+          popup: 'animate__animated animate__zoomIn'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__zoomOut'
+        },
+        customClass: {
+          popup: 'custom-popup',
+          title: 'custom-title',
+          htmlContainer: 'custom-body',
+          confirmButton: 'custom-confirm-btn'
+        },
+        confirmButtonText: 'Cant wait! 😘'
+      });
+    }
+
+    // 6. Kontrol Musik Latar
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicToggle');
+
+    function playMusic() {
+      music.play();
+      musicBtn.innerText = '[]';
+    }
+
+    function toggleMusic() {
+      if (music.paused) {
+        playMusic();
+      } else {
+        music.pause();
+        musicBtn.innerText = '▶';
+      }
+    }
+  </script>
+</body>
+</html>
